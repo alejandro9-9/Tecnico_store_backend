@@ -1,0 +1,12 @@
+code,name,requires_diagnosis,notes
+screen,Cambio de pantalla,true,El precio se consulta en la tabla de costos por modelo.
+battery,Cambio de batería,true,El precio se consulta en la tabla de costos por modelo.
+charging_port,Falla de carga,true,El síntoma requiere diagnóstico; no confirma por sí solo una avería del puerto.
+software,Servicio de software,true,Sin tarifa automática hasta registrar un costo específico por modelo.
+board,Reparación de placa,true,Requiere diagnóstico técnico.
+liquid,Diagnóstico por líquido o humedad,true,Requiere diagnóstico técnico.
+camera,Reparación de cámara,true,El costo depende del componente; se confirma con diagnóstico.
+audio,Reparación de audio,true,"El costo depende de si falla el altavoz, auricular o micrófono."
+buttons,Reparación de botones o vibración,true,Requiere revisión del botón o componente afectado.
+back_glass,Cambio de tapa o vidrio posterior,true,El costo depende del modelo y del repuesto.
+connectivity,Diagnóstico de conectividad,true,"La falla puede estar en la SIM, antena, Wi-Fi o Bluetooth."

@@ -1,0 +1,84 @@
+brand,model,repair_code,price,verified_on
+Apple,iPhone 17 Pro Max,screen,2399.00,2026-10-12
+Apple,iPhone 17 Pro Max,battery,399.00,2026-10-12
+Apple,iPhone 17 Pro,screen,2099.00,2026-10-12
+Apple,iPhone 17 Pro,battery,399.00,2026-10-12
+Apple,iPhone Air,screen,2099.00,2026-10-12
+Apple,iPhone Air,battery,399.00,2026-10-12
+Apple,iPhone 17,screen,2099.00,2026-10-12
+Apple,iPhone 17,battery,399.00,2026-10-12
+Apple,iPhone 16 Pro Max,screen,2199.00,2026-10-12
+Apple,iPhone 16 Pro Max,battery,399.00,2026-10-12
+Apple,iPhone 16 Pro,screen,1919.00,2026-10-12
+Apple,iPhone 16 Pro,battery,399.00,2026-10-12
+Apple,iPhone 16 Plus,screen,1919.00,2026-10-12
+Apple,iPhone 16 Plus,battery,399.00,2026-10-12
+Apple,iPhone 16,screen,1649.00,2026-10-12
+Apple,iPhone 16,battery,399.00,2026-10-12
+Apple,iPhone 16e,screen,1499.00,2026-10-12
+Apple,iPhone 16e,battery,399.00,2026-10-12
+Apple,iPhone 15 Pro Max,screen,1979.00,2026-10-12
+Apple,iPhone 15 Pro Max,battery,399.00,2026-10-12
+Apple,iPhone 15 Pro,screen,1739.00,2026-10-12
+Apple,iPhone 15 Pro,battery,399.00,2026-10-12
+Apple,iPhone 15 Plus,screen,1739.00,2026-10-12
+Apple,iPhone 15 Plus,battery,399.00,2026-10-12
+Apple,iPhone 15,screen,1499.00,2026-10-12
+Apple,iPhone 15,battery,399.00,2026-10-12
+Apple,iPhone 14 Pro Max,screen,1979.00,2026-10-12
+Apple,iPhone 14 Pro Max,battery,399.00,2026-10-12
+Apple,iPhone 14 Pro,screen,1719.00,2026-10-12
+Apple,iPhone 14 Pro,battery,399.00,2026-10-12
+Apple,iPhone 14 Plus,screen,1719.00,2026-10-12
+Apple,iPhone 14 Plus,battery,399.00,2026-10-12
+Apple,iPhone 14,screen,1449.00,2026-10-12
+Apple,iPhone 14,battery,399.00,2026-10-12
+Apple,iPhone 13 Pro Max,screen,1719.00,2026-10-12
+Apple,iPhone 13 Pro Max,battery,349.00,2026-10-12
+Apple,iPhone 13 Pro,screen,1439.00,2026-10-12
+Apple,iPhone 13 Pro,battery,349.00,2026-10-12
+Apple,iPhone 13,screen,1449.00,2026-10-12
+Apple,iPhone 13,battery,349.00,2026-10-12
+Apple,iPhone 13 mini,screen,1249.00,2026-10-12
+Apple,iPhone 13 mini,battery,349.00,2026-10-12
+Apple,iPhone 12 Pro Max,screen,1719.00,2026-10-12
+Apple,iPhone 12 Pro Max,battery,349.00,2026-10-12
+Apple,iPhone 12 Pro,screen,1449.00,2026-10-12
+Apple,iPhone 12 Pro,battery,349.00,2026-10-12
+Apple,iPhone 12,screen,1499.00,2026-10-12
+Apple,iPhone 12,battery,349.00,2026-10-12
+Apple,iPhone 12 mini,screen,1259.00,2026-10-12
+Apple,iPhone 12 mini,battery,349.00,2026-10-12
+Apple,iPhone 11,screen,1059.00,2026-10-12
+Apple,iPhone 11,battery,349.00,2026-10-12
+Apple,iPhone XR,screen,1059.00,2026-10-12
+Apple,iPhone XR,battery,349.00,2026-10-12
+Apple,iPhone SE (2da y 3ra gen),screen,779.00,2026-10-12
+Apple,iPhone SE (2da y 3ra gen),battery,249.00,2026-10-12
+Samsung,Galaxy S21,screen,1035.00,2026-10-12
+Samsung,Galaxy S21+,screen,1020.00,2026-10-12
+Samsung,Galaxy S21 Ultra,screen,1240.00,2026-10-12
+Samsung,Galaxy S22,screen,990.00,2026-10-12
+Samsung,Galaxy S22+,screen,1020.00,2026-10-12
+Samsung,Galaxy S22 Ultra,screen,1240.00,2026-10-12
+Samsung,Galaxy S23,screen,920.00,2026-10-12
+Samsung,Galaxy S23+,screen,1140.00,2026-10-12
+Samsung,Galaxy S23 Ultra,screen,1250.00,2026-10-12
+Samsung,Galaxy S24,screen,915.00,2026-10-12
+Samsung,Galaxy S24+,screen,1105.00,2026-10-12
+Samsung,Galaxy S24 Ultra,screen,1255.00,2026-10-12
+Samsung,Galaxy S25,screen,775.00,2026-10-12
+Samsung,Galaxy S25+,screen,975.00,2026-10-12
+Samsung,Galaxy S25 Ultra,screen,1200.00,2026-10-12
+Samsung,Galaxy S26,screen,830.00,2026-10-12
+Samsung,Galaxy S26+,screen,1025.00,2026-10-12
+Samsung,Galaxy S26 Ultra,screen,1240.00,2026-10-12
+Samsung,Galaxy Flip4,screen,1945.00,2026-10-12
+Samsung,Galaxy Fold4,screen,2845.00,2026-10-12
+Samsung,Galaxy Flip5,screen,1320.00,2026-10-12
+Samsung,Galaxy Fold5,screen,2580.00,2026-10-12
+Samsung,Galaxy Flip6,screen,1185.00,2026-10-12
+Samsung,Galaxy Fold6,screen,2490.00,2026-10-12
+Samsung,Galaxy Flip7,screen,1285.00,2026-10-12
+Samsung,Galaxy Fold7,screen,2295.00,2026-10-12
+Samsung,Galaxy Flip7 FE,screen,1185.00,2026-10-12
