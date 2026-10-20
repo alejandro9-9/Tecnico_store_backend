@@ -6,10 +6,12 @@ from decimal import Decimal
 import csv
 import hmac
 from pathlib import Path
+from time import sleep
 
 from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import inspect, select, text
+from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import Session
 
 from .config import get_admin_token, get_allowed_origins, get_staff_token
@@ -47,6 +49,18 @@ ACTIVE_STATUSES = {"scheduled", "confirmed", "arrived", "diagnosing", "awaiting_
 
 
 def initialize_database() -> None:
+    for attempt in range(3):
+        try:
+            _initialize_database_once()
+            return
+        except OperationalError:
+            if attempt == 2:
+                raise
+            # Neon may be waking its compute after a period of inactivity.
+            sleep(2 ** (attempt + 1))
+
+
+def _initialize_database_once() -> None:
     Base.metadata.create_all(bind=engine)
     # create_all creates new tables but does not add columns to an existing one.
     appointment_columns = {column["name"] for column in inspect(engine).get_columns("appointments")}
