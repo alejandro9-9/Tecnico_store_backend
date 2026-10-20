@@ -15,7 +15,7 @@ from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import Session
 
 from .config import get_admin_token, get_allowed_origins, get_staff_token
-from .database import Base, engine, get_db
+from .database import Base, engine, get_db, register_database_initializer
 from .ai import interpret_intake
 from .intake import (
     classify_issue,
@@ -123,9 +123,11 @@ def _get_or_create_device(db: Session, brand: str, model: str) -> DeviceModel:
     return device
 
 
+register_database_initializer(initialize_database)
+
+
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    initialize_database()
     yield
 
 
