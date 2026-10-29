@@ -10,3 +10,4 @@ audio,Reparación de audio,true,"El costo depende de si falla el altavoz, auricu
 buttons,Reparación de botones o vibración,true,Requiere revisión del botón o componente afectado.
 back_glass,Cambio de tapa o vidrio posterior,true,El costo depende del modelo y del repuesto.
 connectivity,Diagnóstico de conectividad,true,"La falla puede estar en la SIM, antena, Wi-Fi o Bluetooth."
+power_diagnostic,Diagnóstico por falla de encendido,true,"Requiere revisión técnica; el importe de muestra es ficticio."

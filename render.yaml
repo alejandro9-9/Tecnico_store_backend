@@ -1,21 +1,17 @@
 services:
   - type: web
     name: evol-repair-api
+    runtime: docker
     plan: free
-    runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
     healthCheckPath: /health
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.12.8
-      - key: DATABASE_URL
-        sync: false
       - key: STAFF_TOKEN
         sync: false
       - key: ADMIN_TOKEN
         sync: false
       - key: FRONTEND_ORIGIN
         sync: false
-      - key: AI_PROVIDER
-        value: rules
+      - key: DATA_DIR
+        value: /tmp/evol-data

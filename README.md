@@ -1,43 +1,27 @@
-# EVOL — backend
+# Backend ASP.NET Core
 
-API de cotizaciones, catálogo de precios por modelo y reparación, y gestión de solicitudes de cita.
+API sobre .NET 10 organizada siguiendo la separación por capas del repositorio [Diarso](https://github.com/alejandro9-9/Diarso):
 
-## Tecnologías
+- `Evol.Domain`: entidades de negocio (`Cita`, `CotizacionReparacion`, `ModeloDispositivo`, `ServicioReparacion`, `PrecioReparacionModelo`, `BloqueHorario`), reglas y la clase base `Entidad` con `Guid`.
+- `Evol.Application`: casos de uso, DTOs y contratos de repositorio. No depende de EF Core ni SQLite.
+- `Evol.Infrastructure`: `ContextoEvol`, configuración EF Core, repositorios específicos y repositorio genérico; implementa los contratos de Aplicación.
+- `Evol.Api`: rutas HTTP, autenticación por tokens y composición de dependencias (`MapeadorRutas.cs`).
 
-- Python
-- FastAPI y Uvicorn para la API REST
-- Pydantic para validar solicitudes y respuestas
-- SQLAlchemy para persistencia con SQLite o PostgreSQL
-- Reglas locales de interpretación; Gemini se puede activar de forma opcional
+Los nombres de carpetas y archivos de negocio también están en español: `Entidades/`, `Abstracciones/`, `Repositorios/`, `Persistencia/`, `ServicioCitas.cs`, `ServicioCotizaciones.cs` y `ServicioAdministracion.cs`.
 
-## Ejecución local
+Las dependencias apuntan hacia el núcleo: API e Infraestructura dependen de Aplicación, y Aplicación depende de Dominio. Dominio no conoce EF Core. Los repositorios traducen entidades a DTOs para mantener la forma de respuesta que consume React. Las rutas HTTP y los nombres JSON se mantienen estables aunque las clases internas estén en español.
 
-Desde esta carpeta:
+El chat es determinístico y sin créditos de IA: `symptom_rules.csv` contiene frases, variantes, preguntas aclaratorias, respuestas frecuentes y consejos de seguridad. Para marcas y reparaciones disponibles, consulta el catálogo activo en la base de datos. Añade frases a las reglas para ampliar lo que reconoce; no agregues información comercial que la tienda no haya confirmado.
 
-```powershell
-py -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-```
-
-La documentación interactiva está en `http://localhost:8000/docs`. Si `DATABASE_URL` se omite, el backend usa SQLite local. Los archivos CSV inicializan el catálogo, modelos conocidos, reglas y precios específicos.
-
-## Variables de entorno
-
-Copia `.env.example` a `.env` y configura `DATABASE_URL`, `STAFF_TOKEN`, `ADMIN_TOKEN` y `FRONTEND_ORIGIN`. `AI_PROVIDER=rules` no requiere una clave de IA. Para activar Gemini, configura `AI_PROVIDER=gemini` y `GEMINI_API_KEY` como secreto; la aplicación vuelve a las reglas locales cuando Gemini no está disponible.
-
-## Docker
+Ejecuta desde `Evol.Api`:
 
 ```powershell
-docker build -t evol-backend .
-docker run --rm -p 8000:8000 -e DATABASE_URL="sqlite:///./evol.db" evol-backend
+$env:STAFF_TOKEN="tec"
+$env:ADMIN_TOKEN="adm"
+$env:FRONTEND_ORIGIN="http://localhost:5173"
+dotnet run --urls http://localhost:8000
 ```
 
-Para producción configura `DATABASE_URL` con la cadena PostgreSQL de Neon y establece tokens propios para el técnico y administración. No publiques claves ni el archivo de base de datos.
+La API usa EF Core con SQLite y crea `../../data/evol-guid.db` localmente. También acepta `DATABASE_PATH` o `DATA_DIR`. El catálogo, modelos y precios iniciales se cargan desde los CSV; si encuentra `evol-net.db` en el mismo directorio, importa una vez los precios específicos guardados allí y deja intacta la base anterior. Las entidades y sus relaciones usan claves `Guid`.
 
-## Despliegue en Render
-
-El archivo `render.yaml` define el servicio FastAPI. Conecta este repositorio como Blueprint, agrega la URL de Neon y configura los secretos solicitados. Después de desplegar, copia la URL HTTPS del backend a `BACKEND_URL` en el repositorio frontend y añade la URL del frontend a `FRONTEND_ORIGIN`.
-
-En Render, `DATABASE_URL` debe estar configurada con la cadena PostgreSQL del compute primario de Neon, incluyendo `sslmode=require`. Neon puede suspender el compute por inactividad; el backend no bloquea el arranque HTTP esperando la base de datos: inicializa el esquema de forma diferida cuando llega la primera operación que la necesita, limita el tiempo de conexión y reintenta brevemente si Neon está despertando. Si el primer pedido tarda, el frontend espera hasta 120 segundos.
+Render publica esta API como servicio Docker con el plan gratuito. Su sistema de archivos no es persistente en ese plan; los datos SQLite pueden reiniciarse al volver a desplegar. Para producción se debe conectar almacenamiento persistente o migrar el proveedor de EF Core a PostgreSQL.
