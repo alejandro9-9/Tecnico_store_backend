@@ -17,8 +17,8 @@ builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
     else policy.WithOrigins(allowedOrigins).AllowAnyHeader().AllowAnyMethod();
 }));
 
-var databasePath = RutaBaseDatosTecFast.Resolver(builder.Configuration["DATABASE_PATH"], builder.Configuration["DATA_DIR"], AppContext.BaseDirectory);
-builder.Services.AgregarInfraestructuraTecFast(databasePath);
+var databaseConnection = ConexionPostgresTecFast.Resolver(builder.Configuration);
+builder.Services.AgregarInfraestructuraTecFast(databaseConnection);
 builder.Services.AddSingleton(_ => ProveedorReglasIngreso.CargarDesdeCsv(Path.Combine(AppContext.BaseDirectory, "symptom_rules.csv")));
 builder.Services.AddSingleton(_ => ProveedorDispositivos.CargarDesdeCsv(Path.Combine(AppContext.BaseDirectory, "device_rules.csv")));
 builder.Services.AddSingleton<ExtractorDispositivo>();

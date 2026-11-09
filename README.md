@@ -24,6 +24,14 @@ $env:FRONTEND_ORIGIN="http://localhost:5173"
 dotnet run --urls http://localhost:8000
 ```
 
-La API usa EF Core con SQLite y crea `../../data/tecfast.db` localmente. También acepta `DATABASE_PATH` o `DATA_DIR`. El catálogo, modelos y precios iniciales se cargan desde los CSV; si encuentra `tecfast-net.db` en el mismo directorio, importa una vez los precios específicos guardados allí y deja intacta la base anterior. Las entidades y sus relaciones usan claves `Guid`.
+La API usa EF Core con PostgreSQL mediante Npgsql. Configura `DATABASE_URL` con la cadena de conexión de Neon (se acepta el formato `postgresql://...` que entrega Neon o el formato de parámetros de Npgsql). En el primer arranque crea las tablas y carga el catálogo, modelos y precios iniciales desde los CSV; las cargas son idempotentes. Las entidades y sus relaciones usan claves `Guid`.
 
-Render publica esta API como servicio Docker con el plan gratuito. Su sistema de archivos no es persistente en ese plan; los datos SQLite pueden reiniciarse al volver a desplegar. Para producción se debe conectar almacenamiento persistente o migrar el proveedor de EF Core a PostgreSQL.
+Render publica esta API como servicio Docker. La base de datos vive en Neon, separada del contenedor, por lo que los datos no dependen del sistema de archivos efímero de Render. En Render configura `DATABASE_URL`, `STAFF_TOKEN`, `ADMIN_TOKEN` y `FRONTEND_ORIGIN`.
+
+## Despliegue en Render + Neon
+
+1. Crea un proyecto PostgreSQL en Neon y copia la cadena pooled desde **Connect**.
+2. En el servicio `tecfast-api` de Render agrega esa cadena como `DATABASE_URL`.
+3. Configura `FRONTEND_ORIGIN` con la URL final de Vercel.
+4. Configura `STAFF_TOKEN` y `ADMIN_TOKEN` con valores seguros.
+5. Despliega el backend; `EnsureCreated()` crea las tablas y el inicializador carga los CSV.

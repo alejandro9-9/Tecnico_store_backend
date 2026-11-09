@@ -13,5 +13,5 @@ services:
         sync: false
       - key: FRONTEND_ORIGIN
         sync: false
-      - key: DATA_DIR
-        value: /tmp/tecfast-data
+      - key: DATABASE_URL
+        sync: false

@@ -8,7 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TecFast.Application\TecFast.Application.csproj" />
     <ProjectReference Include="..\TecFast.Domain\TecFast.Domain.csproj" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.13" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
     <Content Include="..\catalog.csv" Link="catalog.csv" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\known_models.csv" Link="known_models.csv" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\model_repair_prices.csv" Link="model_repair_prices.csv" CopyToOutputDirectory="PreserveNewest" />
