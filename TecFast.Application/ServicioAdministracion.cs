@@ -29,7 +29,7 @@ public sealed class ServicioAdministracion(
         if (availability.Validar(start, end) is { } error)
             return ResultadoOperacion<RespuestaBloqueHorario>.Fail(409, error);
         var reason = string.IsNullOrWhiteSpace(request.Reason) ? "Horario no disponible" : request.Reason.Trim();
-        return ResultadoOperacion<RespuestaBloqueHorario>.Created(blocks.Crear(start, end, reason));
+        return ResultadoOperacion<RespuestaBloqueHorario>.Created(blocks.Crear(start.ToUniversalTime(), end.ToUniversalTime(), reason));
     }
 
     public ResultadoOperacion<bool> EliminarBloqueo(Guid id) => blocks.Eliminar(id)

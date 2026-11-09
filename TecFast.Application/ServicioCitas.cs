@@ -35,7 +35,7 @@ public sealed class ServicioCitas(
 
         if (availability.Validar(scheduled, scheduled.AddHours(1)) is { } error)
             return ResultadoOperacion<RespuestaCita>.Fail(409, error);
-        return ResultadoOperacion<RespuestaCita>.Created(appointments.Crear(request, brand, model, issue, scheduled));
+        return ResultadoOperacion<RespuestaCita>.Created(appointments.Crear(request, brand, model, issue, scheduled.ToUniversalTime()));
     }
 
     public IReadOnlyList<RespuestaCita> ObtenerParaTecnico() => appointments.ObtenerCitas(includePrice: false);

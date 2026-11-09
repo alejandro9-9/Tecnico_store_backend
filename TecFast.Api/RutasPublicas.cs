@@ -12,6 +12,6 @@ internal static class RutasPublicas
         app.MapGet("/api/models", (IServicioCatalogo catalog) => Results.Ok(catalog.ObtenerModelos()));
         app.MapPost("/api/chat", (SolicitudChat request, IServicioCotizaciones quotes) => Http.Convertir(quotes.CrearCotizacion(request)));
         app.MapPost("/api/appointments", (NuevaCita request, IServicioCitas appointments) =>
-            Http.Convertir(appointments.Crear(request), id => $"/api/appointments/{id}"));
+            Http.Convertir(appointments.Crear(request), appointment => $"/api/appointments/{appointment.Id}"));
     }
 }
