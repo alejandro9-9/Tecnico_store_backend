@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: evol-repair-api
+    name: tecfast-api
     runtime: docker
     plan: free
     dockerfilePath: ./Dockerfile
@@ -14,4 +14,4 @@ services:
       - key: FRONTEND_ORIGIN
         sync: false
       - key: DATA_DIR
-        value: /tmp/evol-data
+        value: /tmp/tecfast-data

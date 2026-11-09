@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TecFast.Application\TecFast.Application.csproj" />
+    <ProjectReference Include="..\TecFast.Domain\TecFast.Domain.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.13" />
+    <Content Include="..\catalog.csv" Link="catalog.csv" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\known_models.csv" Link="known_models.csv" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\model_repair_prices.csv" Link="model_repair_prices.csv" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\symptom_rules.csv" Link="symptom_rules.csv" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\device_rules.csv" Link="device_rules.csv" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
